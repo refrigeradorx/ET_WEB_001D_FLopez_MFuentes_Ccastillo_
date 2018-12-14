@@ -1,0 +1,56 @@
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>
+            Tecnico
+        </title>
+        <meta charset="UTF=8"/>
+        <META name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        {% load static %}
+        {}
+        <link href="{% static 'css/css2.css' %}" type="text/css" rel="stylesheet"/>
+        <!-- FLEXBOX -->
+        <link href="{% static 'css/flexboxgrid.css' %}" type="text/css" >
+        <link rel="stylesheet" href="{% static 'css/csstablas.css' %}">
+    </head>
+    <body>
+        <header>
+            <h1 class="text"> Ordenes de {%%}cliente </h1>
+        </header>
+        <div >
+            
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th> Seleccionar </th>
+                        <th> Nombre </th>
+                        <th> Direccion </th>
+                        <th> Ciudad </th>
+                        <th> Comuna </th>
+                        <th> Telefono </th>
+                        <th> Email </th>
+                    </tr>
+                </thead>
+                {% for cliente in clientes %}
+                <tbody>
+                    <tr>
+                        <td data-label=" Seleccionar "> <a class="button" href="{% url 'datos_cliente' id_cliente=cliente.id %}">Ver cliente</a> </td>
+                        <td data-label=" Nombre "> {{cliente.id}} </td>
+                        <td data-label=" Direccion "> {{cliente.direccion}} </td>
+                        <td data-label=" Ciudad "> {{cliente.ciudad}} </td>
+                        <td data-label=" Comuna "> {{cliente.comuna}} </td>
+                        <td data-label=" Telefono "> {{cliente.telefono}} </td>
+                        <td data-label=" Email "> {{cliente.correo}} </td>
+                    </tr>
+                </tbody>
+                {% endfor%}
+            </table>
+            
+        </div>
+    </body>
+</html>
+   
+    

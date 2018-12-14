@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block css %}
+    <title> Registrar clientes</title>
+    <!-- CSS PROPIO -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cssregistrotec.css' %}">
+{% endblock %}
+{% block content %}
+<h1> Formulario de registro </h1>
+<form action="{% url 'accounts:registrar_tecnico' %}" method="post" class="form-register">
+{% csrf_token %}
+    <h2 class="form-title"> Crea un técnico </h2>
+    <div class="contenedor-inputs">
+    {% for message in messages %}
+        <ul class="messages">
+            <li class="success alert">Se ha agregado un cliente exitosamente</li>
+        </ul>
+    {% endfor %}
+    {{ form }}
+    <!--
+        <input type="text" name="nombre" placeholder="Nombre" class="input-48" required>
+        <input type="text" name="telefono" placeholder="Teléfono" class="input-48" required>
+        <input type="text" name="email" placeholder="Email" class="input-100" required>
+        <input type="password" name="pass" placeholder="Contraseña" class="input-48" required>
+        <input type="password" name="repeat-pass" placeholder="Confirmar contraseña" class="input-48" required>
+        <input type="text" name="email" placeholder="Email" class="input-100" required>
+        <input type="text" name="ciudad" placeholder="Ciudad" class="input-48" required>
+        <input type="text" name="comuna" placeholder="Comuna" class="input-48" required>
+    -->
+
+        <input type="submit" value="Registrar tecnico" class="btn-enviar">
+
+        <!--<p class="form-link"> ¿Ya hizo los registros? <a href="#"> Volver al menu principal </a> </p>-->
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,23 @@
+header{
+    background-color: goldenrod;
+    margin: 0px;
+    margin-right: 0px;
+    display:flex;
+}
+
+body {
+    margin: 0;
+}
+
+ul#menu li{
+    align-content: center;
+    display: inline;
+    color: white;
+    font: arial;
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+    font-family: arial;    
+}
+
+

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block css %}
+    <title> Registrar clientes</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cssregistrocli.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1> Formulario de registro </h1>
+    <form action="{% url 'app:registrar_cliente' %}" method="POST" class="form-register" >
+    {% csrf_token %}
+        <h2 class="form-title"> Crea un cliente </h2>
+        <div class="contenedor-inputs">
+            {% for message in messages %}
+                <ul class="messages">
+                    <li class="success alert">{{message}}</li>
+                </ul>
+            {% endfor %}
+            <input type="text" name="nombre" placeholder="Nombre" class="input-48" required>
+            <input type="text" name="direccion" placeholder="Dirección" class="input-48" required>
+            <input type="text" name="ciudad" placeholder="Ciudad" class="input-100" required>
+            <input type="text" name="comuna" placeholder="Comuna" class="input-48" required>
+            <input type="text" name="telefono" placeholder="Teléfono" class="input-48" required>
+            <input type="email" name="correo" placeholder="Email" class="input-100" required>
+            <input type="submit" value="Registrar" class="btn-enviar">
+            <p class="form-link"> ¿Ya hizo los registros? <a href="#"> Volver al menu principal </a> </p>
+        </div>
+    </form>
+{% endblock %}

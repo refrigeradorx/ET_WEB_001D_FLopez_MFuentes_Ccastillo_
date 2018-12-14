@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load staticfiles  %}
+{% block css %}
+        
+    <link href="{% static 'css/css2.css' %}" type="text/css" rel="stylesheet"/>
+    <!-- FLEXBOX -->
+    <link rel="stylesheet" href="{% static 'css/folio.css' %}">
+
+    <link href="{% static 'css/flexboxgrid.css' %}" type="text/css" >
+    <link rel="stylesheet" href="{% static 'css/csstablas.css' %}">
+{% endblock %}
+{% block content %}
+<h1>Lista de clientes</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th> Seleccionar </th>
+                <th> Nombre </th>
+                <th> Direccion </th>
+                <th> Ciudad </th>
+                <th> Comuna </th>
+                <th> Telefono </th>
+                <th> Email </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cliente in clientes %}
+            <tr>
+                <td data-label=" Seleccionar "> <a class="button" href="{% url 'app:datos_cliente' id_cliente=cliente.id %}">Ver cliente</a> </td>
+                <td data-label=" Nombre "> {{cliente.nombre}} </td>
+                <td data-label=" Direccion "> {{cliente.direccion}} </td>
+                <td data-label=" Ciudad "> {{cliente.ciudad}} </td>
+                <td data-label=" Comuna "> {{cliente.comuna}} </td>
+                <td data-label=" Telefono "> {{cliente.telefono}} </td>
+                <td data-label=" Email "> {{cliente.correo}} </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>    
+    <form method="POST" action="{% url 'app:registrar_orden'  %}">
+        {% csrf_token %}
+        <input type="submit" value="Registrar nueva orden" class="btn-enviar">
+    </form>
+{% endblock content %}

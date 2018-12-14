@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block css %}
+    <title> Asignar cliente</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cssregistrocli.css' %}">
+{% endblock css %}
+{% block content %}
+<h1> Formulario de registro </h1>
+<form action="{% url 'app:asignar_tecnico' %}" method="POST" class="form-register">
+{% csrf_token %}
+    <h2 class="form-title"> Asignar cliente a un tecnico </h2>
+    <div class="contenedor-inputs">
+
+        {% for message in messages %}
+            <ul class="messages">
+                <li class="success alert">Se ha agregado un cliente exitosamente</li>
+            </ul>
+        {% endfor %}
+        <!--<select>
+        #{% for cli in clientes %}
+                <option value ="">  </option>
+        {% endfor %}
+        </select>
+        -->
+        {{form.cliente}}
+        {{form.users}}
+
+        <!--
+        <input type="text" name="telefono" placeholder="Teléfono" class="input-48" required>
+        <input type="email" name="email" placeholder="Email" class="input-100" required>
+        -->
+
+        <input type="submit" value="Asignar" class="btn-enviar">
+    </div>
+</form>
+{% endblock content %}
+
+    </body>
+</html>

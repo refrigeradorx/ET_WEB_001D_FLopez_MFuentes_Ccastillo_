@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel = "stylesheet" type = "text/css" href = "{% static 'flexboxgrid.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/csslogout.css' %}">
+        {% block css %}
+        {% endblock %}
+        <title></title>
+    </head>
+    <body>
+        <div>
+            <header class="row">
+                <div class = "middle-xs">
+                    <ul id = "menu">
+                        <hr>
+                            <div class="contenedor-inputs">
+                                <form method="GET" action="{% url 'app:menu' %}"> 
+                                    <input type="submit" value="Menu Principal" class="btn-enviar">
+                                </form>
+
+                                <form method="GET" action="{% url 'app:lista_clientes' %}"> 
+                                    <input type="submit" value="Lista de clientes" class="btn-enviar">
+                                </form>
+                            {% if user.is_staff %}
+                                <form method="GET" action="{% url 'app:asignar_tecnico' %}">
+                                    <input type="submit" value="Asignar Tecnico" class="btn-enviar" >
+                                </form>
+
+                                <form method="GET" action="{% url 'accounts:registrar_tecnico' %}">
+                                    <input type="submit" value="Registrar Técnico" class="btn-enviar">
+                                </form>
+
+                                <form method="GET" action="{% url 'app:registrar_cliente' %}"> 
+                                    <input type="submit" value="Registrar Cliente" class="btn-enviar">
+                                </form>
+                            
+                            
+                               
+                            {% endif %}
+                                <form class="logout-link" method="POST" action="{% url 'accounts:logout'%}">
+                                    {% csrf_token %}
+                                    <input type="submit" value="Cerrar Sesión" class="btn-enviar"/>
+                                </form>
+                            </div>
+                        <hr>
+                    </ul>
+                </div>
+            </header>
+        </div>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

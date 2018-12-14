@@ -1,0 +1,25 @@
+body{
+    background: url(../img/admin.jpg) no-repeat center center fixed;
+    background-size: cover; 
+}
+
+.btn-enviar {
+    background: crimson;
+    color: white;
+    margin: auto;
+    padding: 10px 40px; 
+    cursor: pointer;
+    font-size: 20px;
+}   
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+.contenedor-inputs{
+    
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+}

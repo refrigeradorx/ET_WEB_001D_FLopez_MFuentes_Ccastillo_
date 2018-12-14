@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <title>Orden de trabajo</title>
+    <link rel="stylesheet" href="{% static 'css/cssordentrabajo.css' %}">
+{% endblock css %}
+{% block content %}
+
+<h1> Formulario de orden </h1>
+<form action="{% url 'app:registrar_orden' %}" method="POST" class="form-register">
+    {% csrf_token %}
+    <h2 class="form-title"> Orden de trabajo </h2>
+    <div class="contenedor-inputs">
+      
+        {{form}}
+        {{detalle}}
+        <!--
+        <input type="text" name="cliente" placeholder="Cliente" class="input-48" required>
+        <input type="text" name="fecha" placeholder="Fecha" class="input-48" required>
+        <input type="email" name="modelo-asc" placeholder="Modelo ascensor" class="input-100" required>
+        <input type="text" name="hora-ini" placeholder="Hora inicio" class="input-48" required>
+        <input type="text" name="hora-term" placeholder="Hora termino" class="input-48" required>
+        <input type="text" name="id-asc" placeholder="ID ascensor" class="input-100" required>
+        <input type="text" name="fallas" placeholder="Fallas detectadas" class="input-100" required>
+        <input type="text" name="reparaciones" placeholder="Reparaciones" class="input-100" required>
+        <input type="text" name="piezas" placeholder="Piezas cambiadas" class="input-100">
+        -->
+        
+        <input type="submit" value="Ingresar orden" class="btn-enviar">
+        {% for message in messages %}
+        <ul class="messages">
+            <li class="success alert">{{message}}</li>
+        </ul>
+        {% endfor %}
+    </div>
+</form>
+{% endblock content %}

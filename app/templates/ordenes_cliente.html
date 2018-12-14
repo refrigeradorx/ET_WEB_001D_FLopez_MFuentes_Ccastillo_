@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <title> Ordenes clientes </title>
+    <link rel="stylesheet" href="{% static 'css/folio.css' %}">
+{% endblock %}
+{% block content %}
+<h1>Listado de ordenes</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th> Ver detalle </th>
+            <th> Folio </th>
+            <th> ID cliente </th>
+            <th> Fecha </th>
+            <th> Hora inicio </th>
+            <th> Hora termino </th>
+            <th> Nombre cliente </th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for orden in Ordenes %}
+        <tr><td data-label=" Detalle"> <a class="button" href="{% url 'app:detalle_orden' id_cliente=orden.cliente.id folio=orden.folio  %}">Ver detalle</a> </td>
+            <td data-label=" folio "> {{orden.folio}} </td>
+            <td data-label=" ID cliente "> {{orden.cliente}} </td>
+            <td data-label=" Fecha "> {{orden.fecha}} </td>
+            <td data-label=" Hora inicio "> {{orden.hora_inicio}} </td>
+            <td data-label=" Hora termino "> {{orden.hora_termino}} </td>
+            <td data-label=" Nombre cliente "> {{orden.nom_cliente}} </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div class="contenedor-inputs">
+<form method="POST" action="{% url 'app:registrar_orden' %}">
+    <input type="submit" value="Registrar nueva orden" class="btn-enviar">
+</form>
+</div>
+{% endblock content %}
